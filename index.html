@@ -111,25 +111,28 @@
 
     <!-- MODALS SECTION -->
     
-    <!-- Brochure Contact Modal -->
+    <!-- Brochure Download Modal -->
     <div id="brochure-modal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('brochure-modal')">&times;</span>
             <div class="modal-header">
-                <h3>Get The Brochure</h3>
-                <p>Reach out directly to access our high-resolution project brochure and material specifications.</p>
+                <h3>Download Brochure</h3>
+                <p>Please enter your secure contact details to download the high-resolution project brochure.</p>
             </div>
-            <div class="contact-details">
-                <a href="tel:+919876543210" class="contact-card">
-                    <span class="contact-icon">📞</span>
-                    <strong>+91 98765 43210</strong>
-                    <span>Call our real estate team</span>
-                </a>
-                <a href="mailto:brochure@nilabuilders.com" class="contact-card">
-                    <span class="contact-icon">✉️</span>
-                    <strong>brochure@nilabuilders.com</strong>
-                    <span>Request via Email</span>
-                </a>
+            <form id="brochure-form" class="enquire-form">
+                <div class="form-group">
+                    <input type="text" id="brochure-name" placeholder="Full Name" required pattern="^[a-zA-Z\s]{2,50}$" title="Please enter a valid name (letters only)">
+                </div>
+                <div class="form-group">
+                    <input type="email" id="brochure-email" placeholder="Email Address" required pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" title="Please enter a valid real email address">
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="brochure-phone" placeholder="Phone Number (10 digits)" required pattern="^[0-9]{10}$" title="Please enter exactly 10 numeric digits">
+                </div>
+                <button type="submit" class="btn btn-dark w-100">Verify & Download</button>
+            </form>
+            <div id="brochure-success" style="display: none; text-align: center; margin-top: 15px;">
+                <p style="color: #25d366; font-weight: 600; font-family: var(--font-body);">Verification successful! Downloading brochure...</p>
             </div>
         </div>
     </div>
@@ -179,12 +182,43 @@
             }
         }
         
-        // Prevent form submission refresh and simulate sending
+        // Enquire Form Submission
         document.getElementById('enquire-form').addEventListener('submit', function(e) {
             e.preventDefault();
             alert('Thank you for your enquiry. Nila Builders will reach out to you shortly.');
             closeModal('enquire-modal');
             this.reset();
+        });
+
+        // Brochure Form Submission with Validation
+        document.getElementById('brochure-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Note: HTML5 pattern attributes heavily enforce the 10-digit phone and valid email structure
+            // natively before this event fires. Once we reach here, validation has passed.
+            
+            this.style.display = 'none';
+            const successDiv = document.getElementById('brochure-success');
+            successDiv.style.display = 'block';
+            
+            // Simulate server validation delay and triggering secure download
+            setTimeout(() => {
+                // Auto-triggering a dummy brochure download file for the user
+                const a = document.createElement('a');
+                a.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent('NILA BUILDERS VILLA PROJECT - EXCLUSIVE BROCHURE\n\nThank you for your interest! We will contact you soon.'); 
+                a.download = 'Nila_Builders_Brochure.txt';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                
+                // Close modal and reset
+                setTimeout(() => {
+                    closeModal('brochure-modal');
+                    this.reset();
+                    this.style.display = 'block';
+                    successDiv.style.display = 'none';
+                }, 1500);
+            }, 1000);
         });
 
         // Apple-style scroll animation logic
