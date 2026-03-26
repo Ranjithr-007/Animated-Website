@@ -3,165 +3,239 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minimalist Villa | Modern Architecture</title>
-    <meta name="description" content="A modern architectural project showcasing Sustainable Materials, Passive Light Design, and Zen Interior Layouts.">
-    
-    <!-- Google Fonts for Luxury Aesthetics -->
+    <title>Nila Builders | Kerala Luxury Homes</title>
+    <!-- Google Fonts: Inter for UI/Body, Montserrat for headings -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="logo">
+            <span class="logo-text">NILA BUILDERS</span>
+        </div>
+    </header>
+
     <main>
-        <!-- Hero Section -->
-        <section id="hero" class="hero-section">
-            <div class="hero-text-clean">
-                <h1>The Future of<br> Minimalist Living</h1>
-                <p>A harmonious blend of form and function.<br><br><span class="scroll-hint">Scroll to deconstruct</span></p>
-            </div>
-            <div class="hero-image-container">
-                <canvas id="hero-lightpass"></canvas>
-            </div>
-        </section>
-
-        <!-- Core Features Section -->
-        <section id="features" class="features-section">
-            <div class="section-header">
-                <h2>Architectural Pillars</h2>
-                <p>The foundation of our design philosophy.</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">01</div>
-                    <h3>Sustainable Materials</h3>
-                    <p>Locally sourced stone, reclaimed timber, and low-impact concrete form the monolithic structure, ensuring longevity and environmental harmony.</p>
+        <!-- Apple-Style Scroll Hero Section -->
+        <section id="hero-scroll-story" class="hero-scroll-section">
+            <div class="sticky-container">
+                <!-- Background Layer: Images -->
+                <div class="scroll-images">
+                    <img src="apple_image_1.png" id="scroll-img-1" class="scroll-img" alt="Luxury Villa View 1">
+                    <img src="apple_image_2.png" id="scroll-img-2" class="scroll-img" alt="Luxury Villa View 2">
+                    <div class="hero-overlay"></div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">02</div>
-                    <h3>Passive Light Design</h3>
-                    <p>Strategically positioned clerestory windows and skylights harness natural daylight, tracking the sun's path to reduce energy consumption.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">03</div>
-                    <h3>Zen Interior Layouts</h3>
-                    <p>Open-plan spaces that flow seamlessly. Every sightline is calibrated to induce calm, stripping away the unnecessary to reveal pure geometry.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- The Reveal Section -->
-        <section id="reveal" class="reveal-section">
-            <div class="reveal-content">
-                <div class="reveal-text">
-                    <h2>Anatomy of the Villa</h2>
-                    <p>Observe the integration of our three pillars. The Transition Flow animation demonstrates how the structural shell protects while the inner core breathes.</p>
-                </div>
-                <div class="reveal-image-wrapper">
-                    <!-- Exploded diagram will have CSS scroll animations to piece together -->
-                    <img src="./exploded_diagram.png" alt="Exploded View Diagram" class="exploded-img">
-                </div>
-            </div>
-        </section>
-
-        <!-- Testimonials -->
-        <section id="testimonials" class="testimonials-section">
-            <div class="testimonial-slider">
-                <blockquote class="testimonial">
-                    "Aura Architecture didn't just design a house; they curated a sanctuary. The play of light throughout the day is nothing short of poetic."
-                    <cite>— Elena Rostova, Client</cite>
-                </blockquote>
-            </div>
-        </section>
-
-        <!-- Brochure Download -->
-        <section id="brochure" class="brochure-section">
-            <div class="brochure-container">
-                <h2>Request Project Brochure</h2>
-                <p>Enter your details below to securely access the comprehensive high-resolution blueprint and material specifications.</p>
-                <form id="brochure-form" class="secure-form">
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" required placeholder="name@example.com">
+                
+                <!-- Foreground Layer: Text & Steps -->
+                <div class="scroll-content">
+                    <div id="step-1" class="scroll-step active">
+                        <h1>ULTRA-LUXURY CONTEMPORARY<br>VILLAS IN KERALA</h1>
+                        <p class="subheadline">Experience unprecedented modern elegance.</p>
+                        <p class="scroll-hint">Scroll down to explore <br>↓</p>
                     </div>
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" required pattern="^\+?\d{10,14}$" placeholder="+1234567890">
+                    
+                    <div id="step-2" class="scroll-step">
+                        <h2>CRAFTED FOR THE ELITE</h2>
+                        <p class="subheadline">Minimalist design meeting tropical sophistication.</p>
+                        
+                        <div class="hero-buttons">
+                            <!-- Open Brochure Modal -->
+                            <a href="javascript:void(0)" onclick="openModal('brochure-modal')" class="btn btn-dark">
+                                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                                DOWNLOAD BROCHURE
+                            </a>
+                            <!-- Open Enquire Modal -->
+                            <a href="javascript:void(0)" onclick="openModal('enquire-modal')" class="btn btn-outline">
+                                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                                ENQUIRE NOW
+                            </a>
+                        </div>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-submit">Securely Download Brochure</button>
-                    <p id="form-message" class="form-message"></p>
-                </form>
+                </div>
+            </div>
+            
+            <!-- Floating Contact Icons -->
+            <div class="floating-contact persistent">
+                <a href="#" class="float-icon whatsapp" title="WhatsApp">
+                    <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                </a>
+                <a href="#" class="float-icon email" title="Email">
+                    <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </a>
             </div>
         </section>
 
-        <!-- Call To Action -->
-        <section id="cta" class="cta-section">
-            <div class="cta-container">
-                <h2>Begin Your Journey</h2>
-                <p>Let us translate your vision into an architectural reality.</p>
-                <div class="cta-buttons">
-                    <a href="#" class="btn btn-primary">Book a Design Consultation</a>
+        <!-- Company Details Section -->
+        <section id="company-details" class="company-section">
+            <div class="container">
+                <div class="company-header">
+                    <h2>Premier Kerala Style Builders</h2>
+                    <p class="subtitle">Crafting ultra-luxurious contemporary villas since 1998.</p>
+                </div>
+                
+                <div class="company-content">
+                    <div class="company-text">
+                        <h3>About Nila Builders</h3>
+                        <p>Nila Builders specializes in seamlessly blending ultra-modern contemporary architecture—featuring expansive glass facades, minimalist design, and private infinity pools—with the lush, tropical environment of Kerala.</p>
+                        <p>Through our commitment to quality craftsmanship and sustainable practices, we create timeless homes that honor the cultural heritage of God's Own Country while offering the finest contemporary and sophisticated living experiences.</p>
+                    </div>
+                    <div class="company-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">1,200+</span>
+                            <span class="stat-label">Homes Delivered</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">55+</span>
+                            <span class="stat-label">Ongoing Projects</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">25+</span>
+                            <span class="stat-label">Years of Excellence</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
     <footer class="footer">
-        <p>&copy; 2026 Aura Architecture. All Rights Reserved.</p>
+        <div class="container">
+            <p>&copy; 2026 Nila Builders. All Rights Reserved.</p>
+        </div>
     </footer>
 
+    <!-- MODALS SECTION -->
+    
+    <!-- Brochure Contact Modal -->
+    <div id="brochure-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('brochure-modal')">&times;</span>
+            <div class="modal-header">
+                <h3>Get The Brochure</h3>
+                <p>Reach out directly to access our high-resolution project brochure and material specifications.</p>
+            </div>
+            <div class="contact-details">
+                <a href="tel:+919876543210" class="contact-card">
+                    <span class="contact-icon">📞</span>
+                    <strong>+91 98765 43210</strong>
+                    <span>Call our real estate team</span>
+                </a>
+                <a href="mailto:brochure@nilabuilders.com" class="contact-card">
+                    <span class="contact-icon">✉️</span>
+                    <strong>brochure@nilabuilders.com</strong>
+                    <span>Request via Email</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enquire Now Modal -->
+    <div id="enquire-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('enquire-modal')">&times;</span>
+            <div class="modal-header">
+                <h3>Enquire Now</h3>
+                <p>Register your interest and our property experts will assist you in finding your dream home.</p>
+            </div>
+            <form id="enquire-form" class="enquire-form">
+                <div class="form-group">
+                    <input type="text" placeholder="Full Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Email Address" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" placeholder="Phone Number" required>
+                </div>
+                <div class="form-group">
+                    <textarea rows="4" placeholder="Your Requirements or Message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-dark w-100">Submit Enquiry</button>
+            </form>
+        </div>
+    </div>
+
     <script>
-        // Brochure Form Logic
-        document.getElementById('brochure-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const messageEl = document.getElementById('form-message');
-            messageEl.style.color = 'green';
-            messageEl.textContent = 'Verifying secure details... Initiating download shortly.';
-            // Add any custom API calls or actual download scripts here
-        });
-
-        const canvas = document.getElementById("hero-lightpass");
-        const context = canvas.getContext("2d");
-
-        // The building directory has 192 frames, formatted as frame_000_delay-0.041s.jpg
-        const frameCount = 192;
-        const currentFrame = index => (
-            `./building/frame_${index.toString().padStart(3, '0')}_delay-0.041s.jpg`
-        );
-
-        // Preload images
-        const preloadedImages = [];
-        for (let i = 0; i < frameCount; i++) {
-            const img = new Image();
-            img.src = currentFrame(i);
-            preloadedImages.push(img);
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.body.style.overflow = 'hidden'; // Stop scrolling
+        }
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.body.style.overflow = '';
         }
 
-        // Set canvas dimensions
-        const img = new Image();
-        img.src = currentFrame(0);
-        img.onload = function() {
-            canvas.width = 1920; 
-            canvas.height = 1080;
-            context.drawImage(img, 0, 0);
-        };
+        // Close when clicking outside modal content
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+        
+        // Prevent form submission refresh and simulate sending
+        document.getElementById('enquire-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your enquiry. Nila Builders will reach out to you shortly.');
+            closeModal('enquire-modal');
+            this.reset();
+        });
 
-        window.addEventListener('scroll', () => {  
-            requestAnimationFrame(() => {
-                const heroSection = document.getElementById('hero');
-                const scrollTop = window.scrollY;
-                const maxScroll = heroSection.scrollHeight - window.innerHeight;
-                const scrollFraction = Math.max(0, Math.min(scrollTop / maxScroll, 1));
-                const frameIndex = Math.min(
-                    frameCount - 1,
-                    Math.ceil(scrollFraction * frameCount)
-                );
+        // Apple-style scroll animation logic
+        window.addEventListener('scroll', () => {
+            const heroSection = document.getElementById('hero-scroll-story');
+            if(!heroSection) return;
+            
+            const scrollY = window.scrollY;
+            const viewportHeight = window.innerHeight;
+            // The section height minus the viewport gives the total scrollable distance within this block
+            const totalScrollable = heroSection.offsetHeight - viewportHeight;
+            let rawProgress = (scrollY - heroSection.offsetTop) / totalScrollable;
+            
+            // Clamp progress between 0 and 1
+            const progress = Math.max(0, Math.min(1, rawProgress));
+            
+            const img1 = document.getElementById('scroll-img-1');
+            const img2 = document.getElementById('scroll-img-2');
+            const step1 = document.getElementById('step-1');
+            const step2 = document.getElementById('step-2');
+            
+            // Image 1 fades out, Image 2 fades in
+            // Use 0-0.5 for img1 fadeout, 0.5-1.0 for img2 fadein, or overlap them
+            // Overlapping crossfade implies img1 starts at 1, img2 fades over it.
+            
+            img2.style.opacity = progress * 1.5; 
+            
+            // Zoom effects to make it premium
+            img1.style.transform = `scale(${1 + (progress * 0.1)}) translateY(${progress * -5}%)`;
+            img2.style.transform = `scale(${1.1 - (progress * 0.1)})`;
+
+            // Text sequence
+            if(progress < 0.4) {
+                // Step 1 active & fading out gradually
+                step1.style.opacity = 1 - (progress * 2.5); // Fades out by progress = 0.4
+                step1.style.transform = `translate(-50%, ${-50 - (progress*20)}%)`;
                 
-                if (preloadedImages[frameIndex] && preloadedImages[frameIndex].complete) {
-                    context.drawImage(preloadedImages[frameIndex], 0, 0, canvas.width, canvas.height);
-                }
-            });
+                step2.style.opacity = 0;
+                step2.style.transform = `translate(-50%, 0%)`; // Keep it lower initially
+                step2.style.pointerEvents = 'none';
+                step1.style.pointerEvents = 'auto'; // allow clicks on step 1
+            } else {
+                step1.style.opacity = 0;
+                step1.style.pointerEvents = 'none';
+
+                // Step 2 comes up
+                const step2Progress = (progress - 0.4) / 0.6; // normalized 0 to 1 for the second half
+                step2.style.opacity = step2Progress * 2;
+                step2.style.transform = `translate(-50%, ${-30 - (step2Progress * 20)}%)`; // Rises into the -50% spot
+                step2.style.pointerEvents = progress > 0.6 ? 'auto' : 'none'; // Re-enable clicks
+            }
         });
     </script>
 </body>
