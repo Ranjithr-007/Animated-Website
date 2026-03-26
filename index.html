@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalist Villa | Modern Architecture</title>
+    <meta name="description" content="A modern architectural project showcasing Sustainable Materials, Passive Light Design, and Zen Interior Layouts.">
+    
+    <!-- Google Fonts for Luxury Aesthetics -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="hero-text-clean">
+                <h1>The Future of<br> Minimalist Living</h1>
+                <p>A harmonious blend of form and function.<br><br><span class="scroll-hint">Scroll to deconstruct</span></p>
+            </div>
+            <div class="hero-image-container">
+                <canvas id="hero-lightpass"></canvas>
+            </div>
+        </section>
+
+        <!-- Core Features Section -->
+        <section id="features" class="features-section">
+            <div class="section-header">
+                <h2>Architectural Pillars</h2>
+                <p>The foundation of our design philosophy.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">01</div>
+                    <h3>Sustainable Materials</h3>
+                    <p>Locally sourced stone, reclaimed timber, and low-impact concrete form the monolithic structure, ensuring longevity and environmental harmony.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">02</div>
+                    <h3>Passive Light Design</h3>
+                    <p>Strategically positioned clerestory windows and skylights harness natural daylight, tracking the sun's path to reduce energy consumption.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">03</div>
+                    <h3>Zen Interior Layouts</h3>
+                    <p>Open-plan spaces that flow seamlessly. Every sightline is calibrated to induce calm, stripping away the unnecessary to reveal pure geometry.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Reveal Section -->
+        <section id="reveal" class="reveal-section">
+            <div class="reveal-content">
+                <div class="reveal-text">
+                    <h2>Anatomy of the Villa</h2>
+                    <p>Observe the integration of our three pillars. The Transition Flow animation demonstrates how the structural shell protects while the inner core breathes.</p>
+                </div>
+                <div class="reveal-image-wrapper">
+                    <!-- Exploded diagram will have CSS scroll animations to piece together -->
+                    <img src="./exploded_diagram.png" alt="Exploded View Diagram" class="exploded-img">
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section id="testimonials" class="testimonials-section">
+            <div class="testimonial-slider">
+                <blockquote class="testimonial">
+                    "Aura Architecture didn't just design a house; they curated a sanctuary. The play of light throughout the day is nothing short of poetic."
+                    <cite>— Elena Rostova, Client</cite>
+                </blockquote>
+            </div>
+        </section>
+
+        <!-- Brochure Download -->
+        <section id="brochure" class="brochure-section">
+            <div class="brochure-container">
+                <h2>Request Project Brochure</h2>
+                <p>Enter your details below to securely access the comprehensive high-resolution blueprint and material specifications.</p>
+                <form id="brochure-form" class="secure-form">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="name@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required pattern="^\+?\d{10,14}$" placeholder="+1234567890">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-submit">Securely Download Brochure</button>
+                    <p id="form-message" class="form-message"></p>
+                </form>
+            </div>
+        </section>
+
+        <!-- Call To Action -->
+        <section id="cta" class="cta-section">
+            <div class="cta-container">
+                <h2>Begin Your Journey</h2>
+                <p>Let us translate your vision into an architectural reality.</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-primary">Book a Design Consultation</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Aura Architecture. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Brochure Form Logic
+        document.getElementById('brochure-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const messageEl = document.getElementById('form-message');
+            messageEl.style.color = 'green';
+            messageEl.textContent = 'Verifying secure details... Initiating download shortly.';
+            // Add any custom API calls or actual download scripts here
+        });
+
+        const canvas = document.getElementById("hero-lightpass");
+        const context = canvas.getContext("2d");
+
+        // The building directory has 192 frames, formatted as frame_000_delay-0.041s.jpg
+        const frameCount = 192;
+        const currentFrame = index => (
+            `./building/frame_${index.toString().padStart(3, '0')}_delay-0.041s.jpg`
+        );
+
+        // Preload images
+        const preloadedImages = [];
+        for (let i = 0; i < frameCount; i++) {
+            const img = new Image();
+            img.src = currentFrame(i);
+            preloadedImages.push(img);
+        }
+
+        // Set canvas dimensions
+        const img = new Image();
+        img.src = currentFrame(0);
+        img.onload = function() {
+            canvas.width = 1920; 
+            canvas.height = 1080;
+            context.drawImage(img, 0, 0);
+        };
+
+        window.addEventListener('scroll', () => {  
+            requestAnimationFrame(() => {
+                const heroSection = document.getElementById('hero');
+                const scrollTop = window.scrollY;
+                const maxScroll = heroSection.scrollHeight - window.innerHeight;
+                const scrollFraction = Math.max(0, Math.min(scrollTop / maxScroll, 1));
+                const frameIndex = Math.min(
+                    frameCount - 1,
+                    Math.ceil(scrollFraction * frameCount)
+                );
+                
+                if (preloadedImages[frameIndex] && preloadedImages[frameIndex].complete) {
+                    context.drawImage(preloadedImages[frameIndex], 0, 0, canvas.width, canvas.height);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
