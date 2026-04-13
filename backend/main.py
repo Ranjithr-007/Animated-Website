@@ -50,6 +50,7 @@ async def create_lead(lead: LeadCreate, db: Session = Depends(get_db)):
         db.rollback()
         raise HTTPException(status_code=500, detail=f"Database Error: {str(e)}")
 
-@app.get("/")
-def read_root():
-    return {"message": "Nila Builders API is running. Test the connection at /api/leads"}
+from fastapi.staticfiles import StaticFiles
+
+# Mount the public directory to serve frontend (HTML, CSS, Images, JS)
+app.mount("/", StaticFiles(directory="public", html=True), name="public")
