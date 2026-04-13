@@ -534,6 +534,28 @@ a {
     background: #fff;
 }
 
+/* Checkbox specific styling */
+.checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: auto;
+    margin-top: 3px;
+    cursor: pointer;
+}
+
+.checkbox-group label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    cursor: pointer;
+}
+
 /* =========================================
    FOOTER
 ========================================= */
