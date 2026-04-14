@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -119,19 +119,23 @@
                 <h3>Download Brochure</h3>
                 <p>Please enter your secure contact details to download the high-resolution project brochure.</p>
             </div>
-            <form id="brochure-form" class="enquire-form">
+            <form id="brochure-form" class="enquire-form" action="https://script.google.com/macros/s/AKfycbxj3EJTBtaM6wWbESS5arPpii2lYxx8s2MzOiaewE8OAkNml-6cRbBE4O2drgMUIjBN4A/exec">
+
                 <div class="form-group">
-                    <input type="text" id="brochure-name" placeholder="Full Name" required pattern="^[a-zA-Z\s]{2,50}$" title="Please enter a valid name (letters only)">
+                    <input type="text" name="name" placeholder="Full Name" required>
                 </div>
+
                 <div class="form-group">
-                    <input type="email" id="brochure-email" placeholder="Email Address" required pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" title="Please enter a valid real email address">
+                    <input type="email" name="email" placeholder="Email Address" required>
                 </div>
+
                 <div class="form-group">
-                    <input type="tel" id="brochure-phone" placeholder="Phone Number (10 digits)" required pattern="^[0-9]{10}$" title="Please enter exactly 10 numeric digits">
+                    <input type="tel" name="phone" placeholder="Phone Number" required>
                 </div>
+
                 <div class="form-group checkbox-group">
-                    <input type="checkbox" id="brochure-consent" required>
-                    <label for="brochure-consent">I agree to be contacted regarding this project and accept the privacy terms.</label>
+                    <input type="checkbox" name="consent" value="yes" required>
+                    <label>I agree to be contacted</label>
                 </div>
                 <button type="submit" class="btn btn-dark w-100">Verify & Download</button>
             </form>
@@ -167,6 +171,31 @@
         </div>
     </div>
 
+    <script>
+        $("#brochure-form").submit(function(e){
+            e.preventDefault();
+
+            let formData = $("#brochure-form").serialize();
+            console.log(formData); // debug
+
+            $.ajax({
+                url: "https://script.google.com/macros/s/AKfycbxj3EJTBtaM6wWbESS5arPpii2lYxx8s2MzOiaewE8OAkNml-6cRbBE4O2drgMUIjBN4A/exec",
+                method: "POST",
+                data: formData,
+
+                success: function(response){
+                    alert("Form submitted successfully");
+                    window.location.reload();
+                },
+
+                error: function(err){
+                    console.error(err);
+                    alert("Something went wrong");
+                }
+            });
+        });
+    </script>
+    
     <script>
         function openModal(modalId) {
             document.getElementById(modalId).classList.add('active');
