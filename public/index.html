@@ -132,7 +132,7 @@
                 <div class="form-group">
                     <input type="tel" name="phone" placeholder="Phone Number" required>
                 </div>
-                
+
                 <button type="submit" class="btn btn-dark w-100">Verify & Download</button>
             </form>
             <div id="brochure-success" style="display: none; text-align: center; margin-top: 15px;">
@@ -168,28 +168,37 @@
     </div>
 
     <script>
-        $("#brochure-form").submit(function(e){
-            e.preventDefault();
+    $("#brochure-form").submit(function(e){
+        e.preventDefault();
 
-            let formData = $("#brochure-form").serialize();
-            console.log(formData); // debug
+        let formData = $("#brochure-form").serialize();
 
-            $.ajax({
-                url: "https://script.google.com/macros/s/AKfycbxj3EJTBtaM6wWbESS5arPpii2lYxx8s2MzOiaewE8OAkNml-6cRbBE4O2drgMUIjBN4A/exec",
-                method: "POST",
-                data: formData,
+        $.ajax({
+            url: "https://script.google.com/macros/s/AKfycbxj3EJTBtaM6wWbESS5arPpii2lYxx8s2MzOiaewE8OAkNml-6cRbBE4O2drgMUIjBN4A/exec",
+            method: "POST",
+            data: formData,
 
-                success: function(response){
-                    alert("Form submitted successfully");
-                    window.location.reload();
-                },
+            success: function(response){
+                alert("Form submitted successfully");
 
-                error: function(err){
-                    console.error(err);
-                    alert("Something went wrong");
-                }
-            });
+                // Force download
+                const link = document.createElement("a");
+                link.href = "brochure.pdf";  // make sure file path is correct
+                link.setAttribute("download", "brochure.pdf"); // forces download
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+
+                // Optional: reset form instead of reload
+                $("#brochure-form")[0].reset();
+            },
+
+            error: function(err){
+                console.error(err);
+                alert("Something went wrong");
+            }
         });
+    });
     </script>
     
     <script>
